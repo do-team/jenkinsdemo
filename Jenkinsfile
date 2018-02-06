@@ -1,3 +1,7 @@
+environment {
+        TERRAFORM_CMD = '/bin/terraform'
+    }
+
 node {
    stage 'checkout'
         checkout scm
@@ -11,7 +15,7 @@ node {
         sh "echo Build in progress"
 
    stage name: 'plan', concurrency: 1
-        sh "terraform plan --out plan"
+        sh "${TERRAFORM_CMD} init"
 
    stage name: 'deploy', concurrency: 1
         def deploy_validation = input(
