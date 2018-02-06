@@ -11,7 +11,7 @@ node {
         sh "echo Build in progress"
 
    stage name: 'plan', concurrency: 1
-        sh "echo terraform plan --out plan"
+        sh "terraform plan --out plan"
 
    stage name: 'deploy', concurrency: 1
         def deploy_validation = input(
